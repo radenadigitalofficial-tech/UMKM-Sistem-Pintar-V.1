@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UMKM Sistem Pintar</title>
+    <script>
+      // Suppress annoying "WebSocket closed without opened" errors often seen in AI Studio preview
+      const originalError = console.error;
+      console.error = (...args) => {
+        if (typeof args[0] === 'string' && (
+          args[0].includes('WebSocket connection to') || 
+          args[0].includes('WebSocket closed without opened')
+        )) {
+          return;
+        }
+        originalError.apply(console, args);
+      };
+    </script>
   </head>
   <body>
     <div id="root"></div>
